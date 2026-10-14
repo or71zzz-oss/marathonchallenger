@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { api } from '../api.js';
 import CalendarPicker, { isoToSlash } from '../CalendarPicker.jsx';
 import {
@@ -22,10 +22,28 @@ const emptyForm = {
   name: '',
   types: [],
   customLabel: '',
+  official: false,
 };
+
+const LIST_RESTORE_KEY = 'marathon-list-restore';
+
+function saveListRestore({ yearFilter, monthFilter, view, raceId }) {
+  sessionStorage.setItem(
+    LIST_RESTORE_KEY,
+    JSON.stringify({
+      yearFilter,
+      monthFilter,
+      view,
+      raceId,
+      scrollY: window.scrollY,
+    }),
+  );
+}
 
 export default function RaceListPage({ user, onLogout }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const navigationType = useNavigationType();
   const [races, setRaces] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
@@ -41,7 +59,9 @@ export default function RaceListPage({ user, onLogout }) {
   const [yearFilter, setYearFilter] = useState(null);
   const [monthFilter, setMonthFilter] = useState(null);
   const [calendarOpen, setCalendarOpen] = useState(false);
+  const [pendingScroll, setPendingScroll] = useState(null);
   const focused = useRef(null);
+  const restoreApplied = useRef(false);
   const canManage = user.name === '정재진';
   const today = new Date();
   const todayKey = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
@@ -84,6 +104,28 @@ export default function RaceListPage({ user, onLogout }) {
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  useEffect(() => {
+    if (loading || restoreApplied.current) return;
+    const shouldRestore = navigationType === 'POP' || location.state?.restoreList;
+    if (!shouldRestore) return;
+    const raw = sessionStorage.getItem(LIST_RESTORE_KEY);
+    if (!raw) return;
+    restoreApplied.current = true;
+    sessionStorage.removeItem(LIST_RESTORE_KEY);
+    try {
+      const data = JSON.parse(raw);
+      if (data.yearFilter !== undefined) setYearFilter(data.yearFilter);
+      if (data.monthFilter !== undefined) setMonthFilter(data.monthFilter);
+      if (data.view) setView(data.view);
+      setPendingScroll({
+        raceId: data.raceId || null,
+        scrollY: typeof data.scrollY === 'number' ? data.scrollY : 0,
+      });
+    } catch {
+      // ignore corrupt restore payload
+    }
+  }, [loading, navigationType, location.state]);
+
   function isPastRace(iso) {
     const [year, month, day] = iso.split('-').map(Number);
     return year * 10000 + month * 100 + day < todayKey;
@@ -102,6 +144,49 @@ export default function RaceListPage({ user, onLogout }) {
     setMonthFilter(null);
   }
 
+  async function cancelParticipation(race) {
+    const current = myRaceEntry(race);
+    if (!current) return;
+    if (!window.confirm(`${race.name} 참가를 취소할까요?`)) return;
+    setError('');
+    try {
+      const data = await api(`/api/races/${race.id}/entries`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          distanceId: current.distanceId,
+          active: false,
+          goalTime: '',
+        }),
+      });
+      setRaces((list) => list.map((item) => (item.id === data.race.id ? data.race : item)));
+      const prefix = `${race.id}:`;
+      setDrafts((draft) => {
+        const next = { ...draft };
+        for (const key of Object.keys(next)) {
+          if (key.startsWith(prefix)) delete next[key];
+        }
+        return next;
+      });
+      setSaved((state) => {
+        const next = { ...state };
+        for (const key of Object.keys(next)) {
+          if (key.startsWith(prefix)) delete next[key];
+        }
+        return next;
+      });
+      setTimeErrors((state) => {
+        const next = { ...state };
+        for (const key of Object.keys(next)) {
+          if (key.startsWith(prefix)) delete next[key];
+        }
+        return next;
+      });
+    } catch (err) {
+      if (err.status === 401) navigate('/login', { replace: true });
+      else setError(err.message);
+    }
+  }
+
   async function deleteRace(race) {
     if (!window.confirm(`${race.name} 대회를 삭제할까요?`)) return;
     setError('');
@@ -114,8 +199,14 @@ export default function RaceListPage({ user, onLogout }) {
     }
   }
 
+  function myRaceEntry(race) {
+    return race.entries.find((entry) => entry.userId === user.id);
+  }
+
   function myEntry(race, distanceId) {
-    return race.entries.find((entry) => entry.userId === user.id && entry.distanceId === distanceId);
+    const active = myRaceEntry(race);
+    if (!active || active.distanceId !== distanceId) return undefined;
+    return active;
   }
 
   function storedGoal(entry) {
@@ -136,7 +227,9 @@ export default function RaceListPage({ user, onLogout }) {
   }
 
   async function toggleDistance(race, distance) {
-    const entry = myEntry(race, distance.id);
+    const current = myRaceEntry(race);
+    const isActive = current?.distanceId === distance.id;
+    if (current && !isActive) return;
     const key = `${race.id}:${distance.id}`;
     setError('');
     try {
@@ -144,12 +237,12 @@ export default function RaceListPage({ user, onLogout }) {
         method: 'PUT',
         body: JSON.stringify({
           distanceId: distance.id,
-          active: !entry,
-          goalTime: entry?.goalTime || '',
+          active: !isActive,
+          goalTime: '',
         }),
       });
       setRaces((current) => current.map((item) => (item.id === data.race.id ? data.race : item)));
-      if (entry) {
+      if (isActive) {
         setDrafts((current) => {
           const next = { ...current };
           delete next[key];
@@ -157,7 +250,29 @@ export default function RaceListPage({ user, onLogout }) {
         });
         setSaved((current) => ({ ...current, [key]: false }));
       } else {
-        setDrafts((current) => ({ ...current, [key]: '00:00:00' }));
+        const prefix = `${race.id}:`;
+        setDrafts((current) => {
+          const next = { ...current };
+          for (const d of race.distances) {
+            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
+          }
+          next[key] = '00:00:00';
+          return next;
+        });
+        setSaved((current) => {
+          const next = { ...current };
+          for (const d of race.distances) {
+            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
+          }
+          return next;
+        });
+        setTimeErrors((current) => {
+          const next = { ...current };
+          for (const d of race.distances) {
+            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
+          }
+          return next;
+        });
       }
     } catch (err) {
       if (err.status === 401) navigate('/login', { replace: true });
@@ -220,6 +335,7 @@ export default function RaceListPage({ user, onLogout }) {
       name: race.name,
       types: [...new Set(race.distances.map((distance) => distance.type))],
       customLabel: custom?.label || '',
+      official: Boolean(race.official),
     });
     setEditingId(race.id);
     setFormError('');
@@ -241,14 +357,26 @@ export default function RaceListPage({ user, onLogout }) {
     });
     setSavingRace(true);
     try {
-      await api(editingId ? `/api/races/${editingId}` : '/api/races', {
+      const data = await api(editingId ? `/api/races/${editingId}` : '/api/races', {
         method: editingId ? 'PUT' : 'POST',
         body: JSON.stringify({
           date: iso,
           name: form.name.trim(),
+          official: Boolean(form.official),
           distances,
         }),
       });
+      if (data.race) {
+        setRaces((current) => {
+          const exists = current.some((item) => item.id === data.race.id);
+          if (exists) {
+            return current.map((item) => (item.id === data.race.id ? data.race : item));
+          }
+          return [...current, data.race].sort(
+            (a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name, 'ko'),
+          );
+        });
+      }
       await loadRaces();
       setForm(emptyForm);
       setEditingId(null);
@@ -259,6 +387,20 @@ export default function RaceListPage({ user, onLogout }) {
       else setFormError(err.message);
     } finally {
       setSavingRace(false);
+    }
+  }
+
+  const myRaceCount = races.filter((race) =>
+    race.entries.some((entry) => entry.userId === user.id),
+  ).length;
+
+  const myDistanceCounts = { full: 0, half: 0, '10k': 0 };
+  for (const race of races) {
+    const entry = race.entries.find((item) => item.userId === user.id);
+    if (!entry) continue;
+    const distance = race.distances.find((item) => item.id === entry.distanceId);
+    if (distance && distance.type in myDistanceCounts) {
+      myDistanceCounts[distance.type] += 1;
     }
   }
 
@@ -273,10 +415,26 @@ export default function RaceListPage({ user, onLogout }) {
     return true;
   });
 
+  useEffect(() => {
+    if (!pendingScroll || loading) return;
+    const { raceId, scrollY } = pendingScroll;
+    requestAnimationFrame(() => {
+      const el = raceId ? document.getElementById(`race-${raceId}`) : null;
+      if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
+      else window.scrollTo(0, scrollY);
+    });
+    setPendingScroll(null);
+  }, [pendingScroll, loading, yearFilter, monthFilter, view, visibleRaces.length]);
+
+  function openRaceDetail(race) {
+    saveListRestore({ yearFilter, monthFilter, view, raceId: race.id });
+  }
+
   return (
     <Shell
       user={user}
       onLogout={onLogout}
+      pageShellClass={view === 'mine' ? 'view-mine' : 'view-list'}
       action={
         <>
           <button
@@ -284,7 +442,7 @@ export default function RaceListPage({ user, onLogout }) {
             type="button"
             onClick={() => setView((current) => (current === 'mine' ? 'all' : 'mine'))}
           >
-            나의 참가 대회
+            내 대회
           </button>
           <button className="primary" type="button" onClick={openAdd}>
             대회 추가
@@ -292,11 +450,16 @@ export default function RaceListPage({ user, onLogout }) {
         </>
       }
     >
-      <h1>{view === 'mine' ? '나의 참가 대회' : '참가 예정 대회'}</h1>
+      <h1>{view === 'mine' ? '내 대회' : '대회 목록'}</h1>
+      {view === 'mine' ? (
+        <p className="my-race-summary">
+          총 {myRaceCount}개 : 풀 {myDistanceCounts.full}개 / 하프 {myDistanceCounts.half}개 / 10k {myDistanceCounts['10k']}개
+        </p>
+      ) : null}
       <p className="muted">
         {view === 'mine'
-          ? '내가 참가한 대회와 목표 기록입니다.'
-          : '날짜가 빠른 대회가 위에 있습니다. 거리를 누르면 참가가 켜지고, 다시 누르면 꺼집니다.'}
+          ? '내가 참가할 대회와 목표 기록입니다.'
+          : '해당 대회 종목을 클릭 후 목표 시간을 입력하세요'}
       </p>
       <p className="guide">해당 대회를 클릭하시면 참가자 목록을 확인 할 수 있습니다.</p>
       <div className="filters">
@@ -334,7 +497,11 @@ export default function RaceListPage({ user, onLogout }) {
       ) : null}
       <div className="race-list">
         {visibleRaces.map((race) => (
-          <article className={isPastRace(race.date) ? 'card race-card past' : 'card race-card'} key={race.id}>
+          <article
+            className={isPastRace(race.date) ? 'card race-card past' : 'card race-card'}
+            id={`race-${race.id}`}
+            key={race.id}
+          >
             <div className="card-top">
               <p className="race-date">
                 {formatDate(race.date)}
@@ -348,17 +515,35 @@ export default function RaceListPage({ user, onLogout }) {
                 </div>
               ) : null}
             </div>
-            <Link className="race-name" to={`/races/${race.id}`}>
-              {race.name}
-              <span className={participantCountClass(totalParticipantCount(race))}>
-                {totalParticipantCount(race)}명
-              </span>
-            </Link>
+            <div className="race-title-row">
+              <Link
+                className={race.official ? 'race-name official-race' : 'race-name'}
+                to={`/races/${race.id}`}
+                onClick={() => openRaceDetail(race)}
+              >
+                {race.name}
+                <span className={participantCountClass(totalParticipantCount(race))}>
+                  {totalParticipantCount(race)}명
+                </span>
+              </Link>
+              {view === 'mine' ? (
+                <button
+                  type="button"
+                  className="withdraw-button"
+                  onClick={() => cancelParticipation(race)}
+                >
+                  참가취소
+                </button>
+              ) : null}
+            </div>
             <div className="distances">
               {race.distances
                 .filter((distance) => view !== 'mine' || myEntry(race, distance.id))
                 .map((distance) => {
+                  const selected = myRaceEntry(race);
                   const entry = myEntry(race, distance.id);
+                  const readOnlyChip = view === 'mine';
+                  const locked = !readOnlyChip && Boolean(selected && selected.distanceId !== distance.id);
                   const key = `${race.id}:${distance.id}`;
                   const persisted = storedGoal(entry);
                   const timeValue = drafts[key] ?? (persisted || '00:00:00');
@@ -367,9 +552,19 @@ export default function RaceListPage({ user, onLogout }) {
                     <div className="distance-item" key={distance.id}>
                       <button
                         type="button"
-                        className={entry ? 'chip active' : 'chip'}
-                        onClick={() => toggleDistance(race, distance)}
+                        className={[
+                          'chip',
+                          entry ? 'active' : '',
+                          locked ? 'locked' : '',
+                          readOnlyChip ? 'read-only' : '',
+                        ].filter(Boolean).join(' ')}
+                        onClick={() => {
+                          if (readOnlyChip) return;
+                          toggleDistance(race, distance);
+                        }}
+                        disabled={readOnlyChip || locked}
                         aria-pressed={Boolean(entry)}
+                        aria-disabled={readOnlyChip || locked}
                       >
                         {distance.label}
                       </button>
@@ -471,17 +666,27 @@ export default function RaceListPage({ user, onLogout }) {
                   />
                 ) : null}
               </label>
-              <label>
-                대회명
-                <input
-                  className="soft-placeholder"
-                  value={form.name}
-                  onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
-                  placeholder="서울마라톤"
-                  maxLength={40}
-                  required
-                />
-              </label>
+              <div className="form-field">
+                <span className="field-label">대회명</span>
+                <div className="name-official-row">
+                  <input
+                    className="soft-placeholder race-name-input"
+                    value={form.name}
+                    onChange={(event) => setForm((current) => ({ ...current, name: event.target.value }))}
+                    placeholder="서울마라톤"
+                    maxLength={40}
+                    required
+                  />
+                  <label className="official-check">
+                    <input
+                      type="checkbox"
+                      checked={form.official}
+                      onChange={(event) => setForm((current) => ({ ...current, official: event.target.checked }))}
+                    />
+                    공식대회
+                  </label>
+                </div>
+              </div>
               <fieldset>
                 <legend>거리 <span className="legend-note">(해당되는 대회의 종목을 모두 선택해주세요)</span></legend>
                 <div className="distances">

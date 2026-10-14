@@ -12,6 +12,7 @@ app.use((req, res, next) => {
   const origin = req.get('origin');
   const allowed = new Set([
     'http://localhost:5173',
+    'http://localhost:5174',
     'https://or71zzz-oss.github.io',
   ]);
   if (origin && allowed.has(origin)) {
@@ -70,7 +71,16 @@ function publicUser(user) {
   return { id: user.id, name: user.name };
 }
 
+function normalizeRaceEntries(race) {
+  const byUser = new Map();
+  for (const entry of race.entries) {
+    byUser.set(entry.userId, entry);
+  }
+  race.entries = [...byUser.values()];
+}
+
 function publicRace(db, race) {
+  normalizeRaceEntries(race);
   const names = new Map(db.users.map((user) => [user.id, user.name]));
   const entries = race.entries
     .map((entry) => ({
@@ -182,13 +192,14 @@ app.post('/api/logout', requireUser, (req, res, next) => {
 });
 
 app.get('/api/races', requireUser, (req, res, next) => {
-  read()
-    .then((db) => {
-      const races = [...db.races]
-        .sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name, 'ko'))
-        .map((race) => publicRace(db, race));
-      res.json({ races });
-    })
+  update((db) => {
+    for (const race of db.races) normalizeRaceEntries(race);
+    const races = [...db.races]
+      .sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name, 'ko'))
+      .map((race) => publicRace(db, race));
+    return { races };
+  })
+    .then((result) => res.json(result))
     .catch(next);
 });
 
@@ -217,7 +228,8 @@ function readRaceInput(body) {
     return selected.has(type) ? [selected.get(type)] : [];
   });
   if (items.length === 0) return { error: '거리를 하나 이상 선택해 주세요.' };
-  return { date, name, items };
+  const official = Boolean(body?.official);
+  return { date, name, items, official };
 }
 
 function buildDistances(items, previous = []) {
@@ -247,6 +259,7 @@ app.post('/api/races', requireUser, (req, res, next) => {
       id: randomBytes(8).toString('hex'),
       date: input.date,
       name: input.name,
+      official: input.official,
       distances: buildDistances(input.items),
       entries: [],
       createdBy: req.user.id,
@@ -280,6 +293,7 @@ app.put('/api/races/:id', requireUser, (req, res, next) => {
     const distanceIds = new Set(distances.map((distance) => distance.id));
     race.date = input.date;
     race.name = input.name;
+    race.official = input.official;
     race.distances = distances;
     race.entries = race.entries.filter((entry) => distanceIds.has(entry.distanceId));
     return publicRace(db, race);
@@ -330,16 +344,30 @@ app.put('/api/races/:id/entries', requireUser, (req, res, next) => {
       throw error;
     }
 
-    race.entries = race.entries.filter(
-      (entry) => !(entry.userId === req.user.id && entry.distanceId === distanceId),
-    );
+    normalizeRaceEntries(race);
+
+    const existing = race.entries.find((entry) => entry.userId === req.user.id);
+
     if (active) {
-      race.entries.push({
-        userId: req.user.id,
-        distanceId,
-        goalTime,
-      });
+      if (existing && existing.distanceId !== distanceId) {
+        const error = new Error('선택한 종목을 먼저 취소한 뒤 다른 종목을 선택해 주세요.');
+        error.status = 409;
+        throw error;
+      }
+      if (existing) {
+        existing.goalTime = goalTime || existing.goalTime || '';
+      } else {
+        race.entries.push({
+          userId: req.user.id,
+          distanceId,
+          goalTime,
+        });
+      }
+    } else {
+      race.entries = race.entries.filter((entry) => entry.userId !== req.user.id);
     }
+
+    normalizeRaceEntries(race);
     return publicRace(db, race);
   })
     .then((race) => res.json({ race }))
@@ -359,7 +387,11 @@ if (isProduction) {
 
 app.use((error, req, res, next) => {
   const origin = req.get('origin');
-  if (origin === 'https://or71zzz-oss.github.io' || origin === 'http://localhost:5173') {
+  if (
+    origin === 'https://or71zzz-oss.github.io'
+    || origin === 'http://localhost:5173'
+    || origin === 'http://localhost:5174'
+  ) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
   }

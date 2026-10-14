@@ -67,9 +67,10 @@ export function popTimeDigit(current) {
   return maskFromDigits(significant);
 }
 
-/** 종목별 참가 등록 수를 모두 합친 인원(중복 종목 참가 포함) */
+/** 대회별 참가 인원(한 사람은 한 번만 집계) */
 export function totalParticipantCount(race) {
-  return race?.entries?.length ?? 0;
+  if (!race?.entries?.length) return 0;
+  return new Set(race.entries.map((entry) => entry.userId)).size;
 }
 
 /** 참가자 수 구간별 표시 클래스 (0~9, 10~19, 20~29, 30+) */

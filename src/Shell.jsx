@@ -1,5 +1,7 @@
-export default function Shell({ user, onLogout, action, children }) {
+export default function Shell({ user, onLogout, action, pageShellClass, children }) {
+  const shellClass = pageShellClass ? `page-shell ${pageShellClass}` : 'page-shell';
   return (
+    <div className={shellClass}>
     <main className="page">
       <header className="topbar">
         <div>
@@ -13,5 +15,6 @@ export default function Shell({ user, onLogout, action, children }) {
       </header>
       {children}
     </main>
+    </div>
   );
 }

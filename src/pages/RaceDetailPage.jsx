@@ -25,7 +25,7 @@ export default function RaceDetailPage({ user, onLogout }) {
 
   return (
     <Shell user={user} onLogout={onLogout}>
-      <Link className="back-link" to="/">목록으로</Link>
+      <Link className="back-link" to="/" state={{ restoreList: true }}>목록으로</Link>
       {error ? <p className="form-error">{error}</p> : null}
       {!race && !error ? <p className="status-line">대회를 불러오는 중</p> : null}
       {race ? (
@@ -34,7 +34,7 @@ export default function RaceDetailPage({ user, onLogout }) {
             {formatDateLong(race.date)}
             {race.startTime ? ` ${race.startTime}` : ''}
           </p>
-          <h1>
+          <h1 className={race.official ? 'official-race-title' : undefined}>
             {race.name}
             <span className={participantCountClass(totalParticipantCount(race))}>
               {totalParticipantCount(race)}명

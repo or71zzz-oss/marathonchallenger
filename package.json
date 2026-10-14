@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "concurrently -k \"npm:dev:server\" \"npm:dev:client\"",
-    "dev:server": "node server/index.js",
+    "dev:server": "node --watch server/index.js",
     "dev:client": "vite",
     "start": "node server/index.js",
     "build": "vite build"

@@ -26,6 +26,7 @@ export default function App() {
     } catch {
       // 세션이 이미 없어도 화면에서는 로그아웃으로 처리합니다.
     }
+    sessionStorage.removeItem('marathon-list-restore');
     setToken(null);
     setUser(null);
   }

@@ -30,7 +30,11 @@ export default function LoginPage({ onLogin }) {
       <section className="card login-card">
         <p className="brand">마라톤챌린저</p>
         <h1>팀 대회 보드</h1>
-        <p className="muted">한글 이름과 숫자 4자리로 들어옵니다. 명단에 있는 이름은 처음 로그인할 때 비밀번호가 정해지고, 등록된 대회가 보입니다.</p>
+        <div className="login-intro muted">
+          <p>한글 이름과 비밀번호 숫자 4자리로 로그인합니다.</p>
+          <p>이름과 비밀번호는 암호화됩니다.</p>
+          <p>즐거운 달리기 생활 합시다!</p>
+        </div>
         <form onSubmit={submit} className="stack">
           <label>
             이름
@@ -56,7 +60,7 @@ export default function LoginPage({ onLogin }) {
           </label>
           {error ? <p className="form-error">{error}</p> : null}
           <button className="primary" type="submit" disabled={pending}>
-            {pending ? '들어가는 중' : '들어가기'}
+            {pending ? '로그인 중' : '로그인'}
           </button>
         </form>
       </section>
