@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: marathonchallenger
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: node server/index.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_BASE_PATH
+        value: /

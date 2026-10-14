@@ -1,4 +1,5 @@
 const TOKEN_KEY = 'marathon_token';
+const API_ROOT = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);
@@ -17,7 +18,8 @@ export async function api(path, options = {}) {
 
   let response;
   try {
-    response = await fetch(path, { ...options, headers });
+    const url = `${API_ROOT}${path}`;
+    response = await fetch(url, { ...options, headers });
   } catch {
     throw new Error('서버에 연결하지 못했습니다.');
   }

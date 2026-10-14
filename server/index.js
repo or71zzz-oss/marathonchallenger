@@ -1,8 +1,31 @@
 import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { randomBytes, scryptSync, timingSafeEqual } from 'crypto';
 import { read, update } from './store.js';
 
 const app = express();
+const distDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', 'dist');
+const isProduction = process.env.NODE_ENV === 'production';
+
+app.use((req, res, next) => {
+  const origin = req.get('origin');
+  const allowed = new Set([
+    'http://localhost:5173',
+    'https://or71zzz-oss.github.io',
+  ]);
+  if (origin && allowed.has(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Access-Control-Allow-Headers', 'authorization, content-type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  }
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(204);
+    return;
+  }
+  next();
+});
+
 app.use(express.json());
 
 const DISTANCE_LABELS = {
@@ -319,13 +342,25 @@ app.put('/api/races/:id/entries', requireUser, (req, res, next) => {
     .catch(next);
 });
 
+if (isProduction) {
+  app.use(express.static(distDir));
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      next();
+      return;
+    }
+    res.sendFile(path.join(distDir, 'index.html'));
+  });
+}
+
 app.use((error, req, res, next) => {
   const status = error.status || 500;
   if (status === 500) console.error(error);
   res.status(status).json({ error: error.status ? error.message : '요청을 처리하지 못했습니다.' });
 });
 
-const port = 3001;
-app.listen(port, '127.0.0.1', () => {
-  console.log(`API http://127.0.0.1:${port}`);
+const port = Number(process.env.PORT) || 3001;
+const host = isProduction ? '0.0.0.0' : '127.0.0.1';
+app.listen(port, host, () => {
+  console.log(`API http://${host}:${port}`);
 });
