@@ -125,6 +125,10 @@ function requireUser(req, res, next) {
     .catch(next);
 }
 
+app.get('/api/health', (req, res) => {
+  res.json({ ok: true });
+});
+
 app.post('/api/login', (req, res, next) => {
   const name = String(req.body?.name || '').trim();
   const password = String(req.body?.password || '');

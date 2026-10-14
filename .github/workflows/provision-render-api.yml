@@ -1,0 +1,149 @@
+name: Provision Render API and link Pages
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  provision:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require Render API key
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          if [ -z "$RENDER_API_KEY" ]; then
+            echo "::error::Repository secret RENDER_API_KEY is missing."
+            echo "Create one at https://dashboard.render.com/u/settings#api-keys"
+            echo "Then add it in GitHub: Settings → Secrets and variables → Actions → New repository secret"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+
+      - name: Find or create Render web service
+        id: render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          set -euo pipefail
+          REPO="https://github.com/or71zzz-oss/marathonchallenger"
+          NAME="marathonchallenger"
+          SERVICES=$(curl -sS -H "Authorization: Bearer $RENDER_API_KEY" \
+            "https://api.render.com/v1/services?limit=100")
+          SERVICE_ID=$(echo "$SERVICES" | node -e "
+            const data = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+            const items = Array.isArray(data) ? data : (data.items || []);
+            const match = items.find((row) => {
+              const svc = row.service || row;
+              return svc.name === process.argv[1] || (svc.repo && svc.repo.includes('marathonchallenger'));
+            });
+            if (!match) process.exit(0);
+            const svc = match.service || match;
+            process.stdout.write(svc.id || '');
+          " "$NAME")
+          if [ -z "$SERVICE_ID" ]; then
+            OWNER_ID=$(curl -sS -H "Authorization: Bearer $RENDER_API_KEY" \
+              "https://api.render.com/v1/owners?limit=20" | node -e "
+                const data = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+                const items = Array.isArray(data) ? data : (data.items || []);
+                const owner = items[0]?.owner || items[0];
+                if (!owner?.id) {
+                  console.error('No Render owner/workspace found for this API key.');
+                  process.exit(1);
+                }
+                process.stdout.write(owner.id);
+              ")
+            CREATE=$(curl -sS -X POST "https://api.render.com/v1/services" \
+              -H "Authorization: Bearer $RENDER_API_KEY" \
+              -H "Content-Type: application/json" \
+              -d "$(node -e "
+                const ownerId = process.argv[1];
+                const repo = process.argv[2];
+                const name = process.argv[3];
+                process.stdout.write(JSON.stringify({
+                  type: 'web_service',
+                  name,
+                  ownerId,
+                  repo,
+                  branch: 'main',
+                  autoDeploy: 'yes',
+                  serviceDetails: {
+                    env: 'node',
+                    plan: 'free',
+                    region: 'singapore',
+                    buildCommand: 'npm ci && npm run build',
+                    startCommand: 'node server/index.js',
+                    healthCheckPath: '/api/health',
+                    envVars: [
+                      { key: 'NODE_ENV', value: 'production' },
+                      { key: 'VITE_BASE_PATH', value: '/' },
+                    ],
+                  },
+                }));
+              " "$OWNER_ID" "$REPO" "$NAME")")
+            SERVICE_ID=$(echo "$CREATE" | node -e "
+              const data = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+              const svc = data.service || data;
+              if (!svc.id) {
+                console.error(JSON.stringify(data));
+                process.exit(1);
+              }
+              process.stdout.write(svc.id);
+            ")
+            echo "Created Render service $SERVICE_ID"
+          else
+            echo "Using existing Render service $SERVICE_ID"
+          fi
+          echo "service_id=$SERVICE_ID" >> "$GITHUB_OUTPUT"
+
+      - name: Trigger Render deploy
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl -sS -X POST "https://api.render.com/v1/services/${{ steps.render.outputs.service_id }}/deploys" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"clearCache":"clear"}' > /dev/null
+
+      - name: Wait for Render service URL
+        id: url
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          set -euo pipefail
+          SERVICE_ID="${{ steps.render.outputs.service_id }}"
+          for i in $(seq 1 40); do
+            DETAIL=$(curl -sS -H "Authorization: Bearer $RENDER_API_KEY" \
+              "https://api.render.com/v1/services/$SERVICE_ID")
+            URL=$(echo "$DETAIL" | node -e "
+              const data = JSON.parse(require('fs').readFileSync(0, 'utf8'));
+              const svc = data.service || data;
+              process.stdout.write(svc.serviceDetails?.url || svc.url || '');
+            ")
+            if [ -n "$URL" ]; then
+              echo "api_url=$URL" >> "$GITHUB_OUTPUT"
+              echo "Render URL: $URL"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "::error::Timed out waiting for Render service URL"
+          exit 1
+
+      - name: Save API URL for GitHub Pages
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh variable set MARATHON_API_URL \
+            --repo or71zzz-oss/marathonchallenger \
+            --body "${{ steps.url.outputs.api_url }}"
+
+      - name: Rebuild GitHub Pages with API URL
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run deploy-pages.yml --repo or71zzz-oss/marathonchallenger
