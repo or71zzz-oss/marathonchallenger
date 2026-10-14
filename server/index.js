@@ -358,6 +358,11 @@ if (isProduction) {
 }
 
 app.use((error, req, res, next) => {
+  const origin = req.get('origin');
+  if (origin === 'https://or71zzz-oss.github.io' || origin === 'http://localhost:5173') {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    res.setHeader('Vary', 'Origin');
+  }
   const status = error.status || 500;
   if (status === 500) console.error(error);
   res.status(status).json({ error: error.status ? error.message : '요청을 처리하지 못했습니다.' });

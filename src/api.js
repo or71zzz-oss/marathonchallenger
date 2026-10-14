@@ -1,5 +1,15 @@
 const TOKEN_KEY = 'marathon_token';
-const API_ROOT = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+
+function resolveApiRoot() {
+  const fromEnv = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
+  if (fromEnv) return fromEnv;
+  if (typeof window !== 'undefined' && window.location.hostname === 'or71zzz-oss.github.io') {
+    return 'https://marathonchallenger.onrender.com';
+  }
+  return '';
+}
+
+const API_ROOT = resolveApiRoot();
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);
@@ -29,7 +39,10 @@ export async function api(path, options = {}) {
     setToken(null);
   }
   if (!response.ok) {
-    const error = new Error(data.error || '요청을 처리하지 못했습니다.');
+    const fallback = response.status === 404
+      ? 'API 주소를 찾을 수 없습니다. 잠시 후 다시 시도해 주세요.'
+      : `요청을 처리하지 못했습니다. (${response.status})`;
+    const error = new Error(data.error || fallback);
     error.status = response.status;
     throw error;
   }
