@@ -1,0 +1,3056 @@
+{
+  "users": [
+    {
+      "id": "5cc980f2f948936e",
+      "name": "김철수",
+      "passwordHash": "7a1f837c03a03c2699340c9cb1ed06f47fa2703a5455a1cca4572f4a19f1d0b3",
+      "salt": "e57b07f20b385d58e88c6ae4c38bf7c2"
+    },
+    {
+      "id": "9500341de595840e",
+      "name": "이영희",
+      "passwordHash": "cb78dd56a5b43985a90484be2e0e86534a793156d3fd08909f9ba5cf046c4bc4",
+      "salt": "032611de0fc8771ee58785182c6e14b8"
+    },
+    {
+      "id": "7ddf98d79e0b954f",
+      "name": "정재진",
+      "passwordHash": "015413f7eec7601b18387f8a22e59bc20c1b24d3c0a7433894a23efdf8836da3",
+      "salt": "d026a6bc70ddc82ed8a9f44c189a4981"
+    },
+    {
+      "id": "8a172e24714136da",
+      "name": "정재진뉴",
+      "passwordHash": "b6a4b5adefa653a2d47858ffa4a0c2b166a6425e325145fa817863cac8028bd5",
+      "salt": "7e5dd4e0b25fb4628cab377b3cc1bf67"
+    },
+    {
+      "id": "a64e387d0b2c4b53",
+      "name": "홍길동",
+      "passwordHash": "ac5317207a4d269ff3f3af58b0d2f845c6ef1f568568f0ea15683cd40c7e9c56",
+      "salt": "1463b1e437693a9b630c93fe6528f807",
+      "passwordSet": true
+    },
+    {
+      "id": "f0aeb056bc5b97c5",
+      "name": "이규상",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "af4e2191f6aab73f",
+      "name": "박지윤",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "0e44125b9d8e6c68",
+      "name": "박상제",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "1cdf918a8a2df5b9",
+      "name": "김동수",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "e321ec3ac43f2150",
+      "name": "장승원",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "287bbeaad9b50010",
+      "name": "신태범",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "c54efc49fdbf2d49",
+      "name": "박병진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "7b7774bf0ee25d8b",
+      "name": "서평안",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "0d83b774d639f486",
+      "name": "진영곤",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "8590a3158c9ac8ac",
+      "name": "최정혁",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "8b2ae13c2f61ab73",
+      "name": "김성준",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "e001672409258642",
+      "name": "박규태",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "827b92513c79460a",
+      "name": "김수홍",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "291a41b8ff013fda",
+      "name": "이동윤",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "e78c12b1783a5100",
+      "name": "남예진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "bc0aaecf2e562d4b",
+      "name": "류동원",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "b240e24f52910c9b",
+      "name": "박경태",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "853d3475ad0c2b54",
+      "name": "이광민",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "7de25e9244b5edd1",
+      "name": "이성길",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "8c5e0418b9901668",
+      "name": "전창일",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "30a354f1bb41dbea",
+      "name": "심지환",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "789ce7127787b14b",
+      "name": "김승훈",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "f24d2d40293d7868",
+      "name": "오석근",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "065628c89bd4f3d8",
+      "name": "이창훈",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "02d0ec98d212ce9e",
+      "name": "김은지",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "0939ed391142c4fd",
+      "name": "배태건",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "141e94fb83a4cf7e",
+      "name": "이청미",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "bdd760e8261bfb93",
+      "name": "김문주",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "18f99d3cc518f012",
+      "name": "이준헌",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "17cf507feb7b044b",
+      "name": "임성진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "cf7ff64886a1caab",
+      "name": "남윤덕",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "1a78456bf999b571",
+      "name": "송윤우",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "32faaf52d52ceef6",
+      "name": "이종호",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "77f750eff80738fb",
+      "name": "이해원",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "eced1f30724e7491",
+      "name": "김다해",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "55f3d17afda3d027",
+      "name": "김수현",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "1adef689b681f403",
+      "name": "박종확",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "bcd5b455fb8eeb4c",
+      "name": "김동근",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "f02cb931996433d9",
+      "name": "김세인",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "51b8186bb9d5be83",
+      "name": "이상영",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "4b2fd797202a4e3e",
+      "name": "박희상",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "3593ad662e10da70",
+      "name": "김제훈",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "771b1f49c0c39708",
+      "name": "감진규",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "4ea050cce682c287",
+      "name": "김건휘",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "9e1e049cace24ee9",
+      "name": "곽명재",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "d11e8f5af4d6d48b",
+      "name": "강무진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "939ec77691896d3d",
+      "name": "신지경",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "62b53df5e71908fb",
+      "name": "유지훈",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "5fddc131e6f476d8",
+      "name": "방태성",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "18af1f0b35a2fd85",
+      "name": "정성진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "eece07533b33b94a",
+      "name": "박건규",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "7e3f447b9da21f41",
+      "name": "배소희",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "08a091846e74923c",
+      "name": "이소정",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "cd8991915e0ef24f",
+      "name": "손명진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "fb3dc018d3c32438",
+      "name": "임은빈",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "7ebce02eaecb56fb",
+      "name": "정상휘",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "0cfa0a72e4fb5d88",
+      "name": "유지은",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "2b41014c6a129961",
+      "name": "모재형",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "26dd1c76efa91696",
+      "name": "이상비",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "5390ce1cfd55f6b0",
+      "name": "이건윤",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "3554d653d98569fa",
+      "name": "김동완",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "00f9c104bf106a29",
+      "name": "공병호",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "8b1ef76ab98fe78a",
+      "name": "이재성",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "417d977dca442210",
+      "name": "조윤준",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "2e4b21ec482a1c84",
+      "name": "김태진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "d1dc476ab9299fcb",
+      "name": "정문화",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "5d1f8ce98eb6152a",
+      "name": "전주영",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "067b30c20e976b41",
+      "name": "정효진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "85596f8a7b231070",
+      "name": "서상훈",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "cc7237c69ef60807",
+      "name": "최지영",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "b27dcf13c504b09a",
+      "name": "서정민",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "46b67e7d3148c94a",
+      "name": "이재관",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "9d8ee6e3c7e34e3a",
+      "name": "김연근",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "af0e90aec33da95f",
+      "name": "김우진",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "5c25991f0986cf59",
+      "name": "강민수",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "0254561a1ab66f57",
+      "name": "박홍석",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "d8ba3be0ae62af6d",
+      "name": "김태원",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "c9ddee7d3f459c44",
+      "name": "남승희",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "dd4e3f040149f90c",
+      "name": "박동현",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "4dfd27e2e5d2c40d",
+      "name": "이양우",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "14e7d9606fca7f3e",
+      "name": "최선미",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "cf2484aa7042e61b",
+      "name": "박찬열",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    },
+    {
+      "id": "c837da942b267240",
+      "name": "양강민",
+      "passwordHash": "",
+      "salt": "",
+      "passwordSet": false
+    }
+  ],
+  "sessions": [
+    {
+      "token": "aebe5be029519fd7eef38f88e8a98048ffce0752ea36dcbe",
+      "userId": "9500341de595840e"
+    },
+    {
+      "token": "db4c4dfe5aed2cc9e389f6e1cb526c2f6a4a175942058b43",
+      "userId": "a64e387d0b2c4b53"
+    },
+    {
+      "token": "839227e075d2b41f18944098457eeee32f6f3f75d2b2abe5",
+      "userId": "1a78456bf999b571"
+    },
+    {
+      "token": "76848e9e5c17aa78b2eb74b1cc5d4489560682aa8790603b",
+      "userId": "7ddf98d79e0b954f"
+    }
+  ],
+  "races": [
+    {
+      "id": "4fc740f62c87fcc2",
+      "date": "2026-10-11",
+      "name": "울산마라톤",
+      "distances": [
+        {
+          "id": "fcb6a96ef796",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "39aef396cf31",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "7ddf98d79e0b954f",
+          "distanceId": "fcb6a96ef796",
+          "goalTime": "01:22:22"
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f"
+    },
+    {
+      "id": "53cdf1501d88f491",
+      "date": "2026-10-17",
+      "name": "2026 경주마라톤",
+      "distances": [
+        {
+          "id": "067f4db07785",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "7d3dc2592141",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "d561d3a41c17",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "7f83b013691c",
+          "type": "custom",
+          "label": "1k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "f0aeb056bc5b97c5",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "0e44125b9d8e6c68",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "1cdf918a8a2df5b9",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "e321ec3ac43f2150",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "287bbeaad9b50010",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "c54efc49fdbf2d49",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "0d83b774d639f486",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "8590a3158c9ac8ac",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "8b2ae13c2f61ab73",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "e001672409258642",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "827b92513c79460a",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "291a41b8ff013fda",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "e78c12b1783a5100",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "bc0aaecf2e562d4b",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "b240e24f52910c9b",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "853d3475ad0c2b54",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "7de25e9244b5edd1",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "8c5e0418b9901668",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "30a354f1bb41dbea",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "065628c89bd4f3d8",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "02d0ec98d212ce9e",
+          "distanceId": "067f4db07785",
+          "goalTime": ""
+        },
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "7d3dc2592141",
+          "goalTime": ""
+        },
+        {
+          "userId": "141e94fb83a4cf7e",
+          "distanceId": "7d3dc2592141",
+          "goalTime": ""
+        },
+        {
+          "userId": "bdd760e8261bfb93",
+          "distanceId": "7d3dc2592141",
+          "goalTime": ""
+        },
+        {
+          "userId": "18f99d3cc518f012",
+          "distanceId": "7d3dc2592141",
+          "goalTime": ""
+        },
+        {
+          "userId": "17cf507feb7b044b",
+          "distanceId": "d561d3a41c17",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf7ff64886a1caab",
+          "distanceId": "d561d3a41c17",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d561d3a41c17",
+          "goalTime": "00:40:00"
+        },
+        {
+          "userId": "7ddf98d79e0b954f",
+          "distanceId": "067f4db07785",
+          "goalTime": "01:58:58"
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f",
+      "startTime": "08:00",
+      "place": "",
+      "homepage": "https://www.gyeongjumarathon.com/home",
+      "official": false
+    },
+    {
+      "id": "e7c1e41a3e554570",
+      "date": "2026-10-18",
+      "name": "전주 R1",
+      "distances": [
+        {
+          "id": "0699362521598e27",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "1a78456bf999b571",
+          "distanceId": "0699362521598e27",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "0699362521598e27",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "2c3c181aa2321f2e",
+      "date": "2026-10-18",
+      "name": "창원 시민 건강 달리기 대회",
+      "distances": [
+        {
+          "id": "9e8f7f22f2be2cd5",
+          "type": "custom",
+          "label": "6k"
+        },
+        {
+          "id": "555faabb8dfbedeb",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "9e8f7f22f2be2cd5",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "555faabb8dfbedeb",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "c18010d9ca794c19",
+      "date": "2026-10-24",
+      "name": "서울플러스",
+      "distances": [
+        {
+          "id": "121a5c785baa8916",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "77f750eff80738fb",
+          "distanceId": "121a5c785baa8916",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "121a5c785baa8916",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "b975d24e355de1eb",
+      "date": "2026-10-24",
+      "name": "세종네이버마라톤대회",
+      "distances": [
+        {
+          "id": "ce3692bb13d75110",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "ce3692bb13d75110",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "ce3692bb13d75110",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:00",
+      "place": "세종중앙공원",
+      "homepage": "https://sejongrun26.com/",
+      "official": false
+    },
+    {
+      "id": "a1025chuncheon01",
+      "date": "2026-10-25",
+      "name": "2026 춘천마라톤",
+      "distances": [
+        {
+          "id": "d1025full0001",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "58ca47468b54",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "43258222d05646a9",
+          "type": "custom",
+          "label": "서포터"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "0e44125b9d8e6c68",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "eced1f30724e7491",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "55f3d17afda3d027",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "1adef689b681f403",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "bcd5b455fb8eeb4c",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "f02cb931996433d9",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "c54efc49fdbf2d49",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "51b8186bb9d5be83",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "4b2fd797202a4e3e",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "3593ad662e10da70",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "771b1f49c0c39708",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "4ea050cce682c287",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "9e1e049cace24ee9",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "e001672409258642",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "d11e8f5af4d6d48b",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf7ff64886a1caab",
+          "distanceId": "d1025full0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "939ec77691896d3d",
+          "distanceId": "58ca47468b54",
+          "goalTime": ""
+        },
+        {
+          "userId": "62b53df5e71908fb",
+          "distanceId": "58ca47468b54",
+          "goalTime": ""
+        },
+        {
+          "userId": "8590a3158c9ac8ac",
+          "distanceId": "58ca47468b54",
+          "goalTime": ""
+        },
+        {
+          "userId": "5fddc131e6f476d8",
+          "distanceId": "43258222d05646a9",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "58ca47468b54",
+          "goalTime": "00:40:00"
+        },
+        {
+          "userId": "7ddf98d79e0b954f",
+          "distanceId": "d1025full0001",
+          "goalTime": "02:58:58"
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f",
+      "startTime": "09:00",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "652472edab9dd2ab",
+      "date": "2026-10-25",
+      "name": "부산바다마라톤",
+      "distances": [
+        {
+          "id": "caa7311cfc8519f0",
+          "type": "custom",
+          "label": "15K"
+        },
+        {
+          "id": "d50a65a57ec3a429",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "aff3f201c83fbe1e",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "17cf507feb7b044b",
+          "distanceId": "caa7311cfc8519f0",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "caa7311cfc8519f0",
+          "goalTime": ""
+        },
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "eece07533b33b94a",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "287bbeaad9b50010",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "141e94fb83a4cf7e",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "827b92513c79460a",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "e78c12b1783a5100",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "1a78456bf999b571",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "7e3f447b9da21f41",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "18f99d3cc518f012",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "853d3475ad0c2b54",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "30a354f1bb41dbea",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "065628c89bd4f3d8",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "02d0ec98d212ce9e",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "08a091846e74923c",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d50a65a57ec3a429",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "07:30",
+      "place": "벡스코",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "38f31ed3c7a53d05",
+      "date": "2026-10-25",
+      "name": "청도반시마라톤",
+      "distances": [
+        {
+          "id": "ec4d98b6e01128be",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "fbfe0d6e988c7de1",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "2dc5ba71d4ca4d0a",
+          "type": "custom",
+          "label": "5.9K"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "cd8991915e0ef24f",
+          "distanceId": "ec4d98b6e01128be",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "fbfe0d6e988c7de1",
+          "goalTime": ""
+        },
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "2dc5ba71d4ca4d0a",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "fbfe0d6e988c7de1",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:30",
+      "place": "",
+      "homepage": "https://xn--hq1bo4en6bw9cp5mzkpmgi.kr/main.php",
+      "official": false
+    },
+    {
+      "id": "bf5353f7bdee6c10",
+      "date": "2026-10-26",
+      "name": "서울마라톤",
+      "distances": [
+        {
+          "id": "e253af4b9900",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "57332fd156dc",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "5cc980f2f948936e",
+          "distanceId": "e253af4b9900",
+          "goalTime": "3:30:00"
+        },
+        {
+          "userId": "5cc980f2f948936e",
+          "distanceId": "57332fd156dc",
+          "goalTime": "45:00"
+        },
+        {
+          "userId": "9500341de595840e",
+          "distanceId": "e253af4b9900",
+          "goalTime": "03:30:00"
+        }
+      ],
+      "createdBy": "5cc980f2f948936e"
+    },
+    {
+      "id": "1c178def363ccc01",
+      "date": "2026-10-31",
+      "name": "사천노을마라톤",
+      "distances": [
+        {
+          "id": "39a28165378d349c",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "8cc7b4ca6162844e",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "bef7569f9162e3df",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "cd8991915e0ef24f",
+          "distanceId": "39a28165378d349c",
+          "goalTime": ""
+        },
+        {
+          "userId": "1a78456bf999b571",
+          "distanceId": "8cc7b4ca6162844e",
+          "goalTime": ""
+        },
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "bef7569f9162e3df",
+          "goalTime": ""
+        },
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "bef7569f9162e3df",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "8cc7b4ca6162844e",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "16:40",
+      "place": "",
+      "homepage": "https://www.sunset.or.kr/ko/sub1_1.html",
+      "official": false
+    },
+    {
+      "id": "0e719adcbd45180f",
+      "date": "2026-10-31",
+      "name": "오티즘 레이스",
+      "distances": [
+        {
+          "id": "6c81ace1ec9f4d42",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "d77fa004b3991f36",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "77f750eff80738fb",
+          "distanceId": "6c81ace1ec9f4d42",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d77fa004b3991f36",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "3af0ca480ea71cb7",
+      "date": "2026-11-01",
+      "name": "김천전국마라톤",
+      "distances": [
+        {
+          "id": "97bc76822301cdbd",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "d6a99c045338f81b",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "7fc555960233f108",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "97bc76822301cdbd",
+          "goalTime": ""
+        },
+        {
+          "userId": "939ec77691896d3d",
+          "distanceId": "97bc76822301cdbd",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d6a99c045338f81b",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:30",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "a53b5cfe990c3276",
+      "date": "2026-11-01",
+      "name": "JTBC 서울마라톤",
+      "distances": [
+        {
+          "id": "427b551bff259a74",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "4ee08ec39b0b0543",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "7e3f447b9da21f41",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "e78c12b1783a5100",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "fb3dc018d3c32438",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "8c5e0418b9901668",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "7ebce02eaecb56fb",
+          "distanceId": "427b551bff259a74",
+          "goalTime": ""
+        },
+        {
+          "userId": "287bbeaad9b50010",
+          "distanceId": "4ee08ec39b0b0543",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "4ee08ec39b0b0543",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "70c839f199698450",
+      "date": "2026-11-07",
+      "name": "해군진해 마라톤",
+      "distances": [
+        {
+          "id": "030a74f715ca76ca",
+          "type": "custom",
+          "label": "11.11K"
+        },
+        {
+          "id": "6348e2b9d28b557c",
+          "type": "5k",
+          "label": "5k"
+        },
+        {
+          "id": "6d2ab6f33f1b9755",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "cd8991915e0ef24f",
+          "distanceId": "030a74f715ca76ca",
+          "goalTime": ""
+        },
+        {
+          "userId": "141e94fb83a4cf7e",
+          "distanceId": "030a74f715ca76ca",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "030a74f715ca76ca",
+          "goalTime": ""
+        },
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "6348e2b9d28b557c",
+          "goalTime": ""
+        },
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "6348e2b9d28b557c",
+          "goalTime": ""
+        },
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "6348e2b9d28b557c",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "6d2ab6f33f1b9755",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:00",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "2d9f41667c320986",
+      "date": "2026-11-08",
+      "name": "과천마라톤",
+      "distances": [
+        {
+          "id": "d22d60ed6b5762b0",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "77f750eff80738fb",
+          "distanceId": "d22d60ed6b5762b0",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d22d60ed6b5762b0",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "2a21986628a098a5",
+      "date": "2026-11-08",
+      "name": "부산헤리티지런",
+      "distances": [
+        {
+          "id": "f527e5fce407c2a2",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "bac2e4d46edce0ac",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "eece07533b33b94a",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "291a41b8ff013fda",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "b240e24f52910c9b",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "5390ce1cfd55f6b0",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "4b2fd797202a4e3e",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "065628c89bd4f3d8",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "08a091846e74923c",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": ""
+        },
+        {
+          "userId": "8c5e0418b9901668",
+          "distanceId": "bac2e4d46edce0ac",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "f527e5fce407c2a2",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "08:00",
+      "place": "다대포해수욕장",
+      "homepage": "https://heritagerun.co.kr/",
+      "official": false
+    },
+    {
+      "id": "a1108sasang0001",
+      "date": "2026-11-08",
+      "name": "사상에코마라톤",
+      "distances": [
+        {
+          "id": "d110810k00001",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "e15af0580b2bc6f1",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "cd8991915e0ef24f",
+          "distanceId": "d110810k00001",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "d110810k00001",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d110810k00001",
+          "goalTime": "00:40:00"
+        },
+        {
+          "userId": "7ddf98d79e0b954f",
+          "distanceId": "d110810k00001",
+          "goalTime": "00:36:59"
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f",
+      "startTime": "10:00",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "7c637159dbc18357",
+      "date": "2026-11-08",
+      "name": "양산배내골애플런",
+      "distances": [
+        {
+          "id": "719a24cdb4c36208",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "d28d589a193baafd",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "0e44125b9d8e6c68",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "17cf507feb7b044b",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "0cfa0a72e4fb5d88",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf7ff64886a1caab",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "2b41014c6a129961",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "26dd1c76efa91696",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "7de25e9244b5edd1",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "02d0ec98d212ce9e",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": ""
+        },
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "d28d589a193baafd",
+          "goalTime": ""
+        },
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "d28d589a193baafd",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "719a24cdb4c36208",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:00",
+      "place": "",
+      "homepage": "https://k-marathon.or.kr/sub02/sub01_01.php",
+      "official": true
+    },
+    {
+      "id": "72201421d388cd7c",
+      "date": "2026-11-08",
+      "name": "후쿠오카마라톤",
+      "distances": [
+        {
+          "id": "403c6f0acbdaeb37",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "672535da61e9b38e",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "18f99d3cc518f012",
+          "distanceId": "403c6f0acbdaeb37",
+          "goalTime": ""
+        },
+        {
+          "userId": "3554d653d98569fa",
+          "distanceId": "403c6f0acbdaeb37",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "672535da61e9b38e",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "2b92e712ba0c5d88",
+      "date": "2026-11-14",
+      "name": "포항챔피언쉽마라톤",
+      "distances": [
+        {
+          "id": "a5aa328ac7c70895",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "1f28d33e7833d4bc",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "141e94fb83a4cf7e",
+          "distanceId": "a5aa328ac7c70895",
+          "goalTime": ""
+        },
+        {
+          "userId": "eece07533b33b94a",
+          "distanceId": "a5aa328ac7c70895",
+          "goalTime": ""
+        },
+        {
+          "userId": "00f9c104bf106a29",
+          "distanceId": "a5aa328ac7c70895",
+          "goalTime": ""
+        },
+        {
+          "userId": "0e44125b9d8e6c68",
+          "distanceId": "a5aa328ac7c70895",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "a5aa328ac7c70895",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "a5aa328ac7c70895",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "https://www.kormarathon.com/ko/races/2026-pohang-marathon-championship",
+      "official": false
+    },
+    {
+      "id": "001e822c1bb84f66",
+      "date": "2026-11-15",
+      "name": "부산국제신문마라톤",
+      "distances": [
+        {
+          "id": "cce46c205c094998",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "8dceff8fd20d1b79",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "cfdcc3aabceb6284",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "0d83b774d639f486",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "8b2ae13c2f61ab73",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "bcd5b455fb8eeb4c",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "eece07533b33b94a",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "3554d653d98569fa",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "00f9c104bf106a29",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "8b1ef76ab98fe78a",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "291a41b8ff013fda",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "f0aeb056bc5b97c5",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "853d3475ad0c2b54",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "55f3d17afda3d027",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf7ff64886a1caab",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "7de25e9244b5edd1",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "417d977dca442210",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "2e4b21ec482a1c84",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "fb3dc018d3c32438",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "4b2fd797202a4e3e",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "8c5e0418b9901668",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "065628c89bd4f3d8",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "02d0ec98d212ce9e",
+          "distanceId": "cce46c205c094998",
+          "goalTime": ""
+        },
+        {
+          "userId": "939ec77691896d3d",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "d1dc476ab9299fcb",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "5d1f8ce98eb6152a",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "827b92513c79460a",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "067b30c20e976b41",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "85596f8a7b231070",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "4ea050cce682c287",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "8590a3158c9ac8ac",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "cc7237c69ef60807",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "f02cb931996433d9",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "1a78456bf999b571",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "b27dcf13c504b09a",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "46b67e7d3148c94a",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "771b1f49c0c39708",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "1cdf918a8a2df5b9",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "30a354f1bb41dbea",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "26dd1c76efa91696",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "9d8ee6e3c7e34e3a",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "b240e24f52910c9b",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "af0e90aec33da95f",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "5c25991f0986cf59",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "0254561a1ab66f57",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "d8ba3be0ae62af6d",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "8dceff8fd20d1b79",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:00",
+      "place": "",
+      "homepage": "https://www.kjmarathon.com/ko/",
+      "official": true
+    },
+    {
+      "id": "a2209b3465c6d91d",
+      "date": "2026-11-15",
+      "name": "서울MBN마라톤",
+      "distances": [
+        {
+          "id": "39d9deb8aa4be220",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "69114cc3f7f84651",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "08a091846e74923c",
+          "distanceId": "39d9deb8aa4be220",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "69114cc3f7f84651",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "c0540279407a0b27",
+      "date": "2026-11-15",
+      "name": "영남알프스마라톤",
+      "distances": [
+        {
+          "id": "ceffd1e0de19a840",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "ada431697e14f986",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "438d73ea3af767c4",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "ada431697e14f986",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "08:00",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "61241c6e97c5cf7e",
+      "date": "2026-11-15",
+      "name": "제주감귤국제마라톤",
+      "distances": [
+        {
+          "id": "b90e0bc264683f4e",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "6fd8a0d1e9c9b95b",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "b608e912e83f0408",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "c9ddee7d3f459c44",
+          "distanceId": "b90e0bc264683f4e",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "b608e912e83f0408",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "2e5b2e936d526dcb",
+      "date": "2026-11-15",
+      "name": "제주마라톤",
+      "distances": [
+        {
+          "id": "723d1aa10558",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "a461297151ea",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "6199b148cb9e",
+          "type": "custom",
+          "label": "30km"
+        }
+      ],
+      "entries": [],
+      "createdBy": "5cc980f2f948936e"
+    },
+    {
+      "id": "0cc7e38893fc14b4",
+      "date": "2026-11-21",
+      "name": "2026 가을바람 유러닝 페스타",
+      "distances": [
+        {
+          "id": "6dcb80372a6db8d5",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "9987beabb83cd269",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "9987beabb83cd269",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "6dcb80372a6db8d5",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "08:30",
+      "place": "",
+      "homepage": "https://urfesta.com/register/",
+      "official": false
+    },
+    {
+      "id": "28ce8107a7196192",
+      "date": "2026-11-21",
+      "name": "서울신문 고프리런",
+      "distances": [
+        {
+          "id": "28e0e58fa989294b",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "f688360cfae071b8",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "28e0e58fa989294b",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "f688360cfae071b8",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "7125a27f9041c6d5",
+      "date": "2026-11-22",
+      "name": "인천마라톤",
+      "distances": [
+        {
+          "id": "293d556a44c76cd1",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "fc7934d1e10d7750",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "77f750eff80738fb",
+          "distanceId": "293d556a44c76cd1",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "fc7934d1e10d7750",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "2d233f19b530076d",
+      "date": "2026-11-28",
+      "name": "남원춘향마라톤",
+      "distances": [
+        {
+          "id": "704996a3c75a95cf",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "adb0d2763dfd3f50",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "b7dea9e2faeb2dc3",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "dc912ec5e3c9362e",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "f02cb931996433d9",
+          "distanceId": "adb0d2763dfd3f50",
+          "goalTime": ""
+        },
+        {
+          "userId": "30a354f1bb41dbea",
+          "distanceId": "dc912ec5e3c9362e",
+          "goalTime": ""
+        },
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "dc912ec5e3c9362e",
+          "goalTime": ""
+        },
+        {
+          "userId": "065628c89bd4f3d8",
+          "distanceId": "dc912ec5e3c9362e",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "b7dea9e2faeb2dc3",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "08:40",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "a1129gimhae0001",
+      "date": "2026-11-29",
+      "name": "가야왕도 김해 전국어울림",
+      "distances": [
+        {
+          "id": "d112910k00001",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "ca0d8e60903a3f7f",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "43fb4707ca15fe51",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "e3e49ee16eb16b9d",
+          "type": "5k",
+          "label": "5k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "43fb4707ca15fe51",
+          "goalTime": ""
+        },
+        {
+          "userId": "cd8991915e0ef24f",
+          "distanceId": "43fb4707ca15fe51",
+          "goalTime": ""
+        },
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "43fb4707ca15fe51",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "43fb4707ca15fe51",
+          "goalTime": ""
+        },
+        {
+          "userId": "287bbeaad9b50010",
+          "distanceId": "d112910k00001",
+          "goalTime": ""
+        },
+        {
+          "userId": "d11e8f5af4d6d48b",
+          "distanceId": "d112910k00001",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "d112910k00001",
+          "goalTime": "00:40:00"
+        },
+        {
+          "userId": "7ddf98d79e0b954f",
+          "distanceId": "d112910k00001",
+          "goalTime": "00:36:30"
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f",
+      "startTime": "08:40",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "8d6d05dc5140d1c8",
+      "date": "2026-12-05",
+      "name": "금산골드런레이스",
+      "distances": [
+        {
+          "id": "e199002c3d4dca7d",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "8e38e8377591bd56",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "08a091846e74923c",
+          "distanceId": "e199002c3d4dca7d",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "8e38e8377591bd56",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "89d12f06f135d217",
+      "date": "2026-12-06",
+      "name": "부산브릿지마라톤",
+      "distances": [
+        {
+          "id": "9dd824f14ddfd2e6",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "16e0c2e7eaadc639",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "fb3dc018d3c32438",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "0e44125b9d8e6c68",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "bcd5b455fb8eeb4c",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "1a78456bf999b571",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "18f99d3cc518f012",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "bc0aaecf2e562d4b",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "4b2fd797202a4e3e",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "8b2ae13c2f61ab73",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "8c5e0418b9901668",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "30a354f1bb41dbea",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "dd4e3f040149f90c",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "7ebce02eaecb56fb",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "065628c89bd4f3d8",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "02d0ec98d212ce9e",
+          "distanceId": "9dd824f14ddfd2e6",
+          "goalTime": ""
+        },
+        {
+          "userId": "c9ddee7d3f459c44",
+          "distanceId": "16e0c2e7eaadc639",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "16e0c2e7eaadc639",
+          "goalTime": ""
+        },
+        {
+          "userId": "f02cb931996433d9",
+          "distanceId": "16e0c2e7eaadc639",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "16e0c2e7eaadc639",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "07:30",
+      "place": "",
+      "homepage": "https://busanmarathon.com/guide/mainpoints?gubun=mainpoints",
+      "official": false
+    },
+    {
+      "id": "a1206yangsan001",
+      "date": "2026-12-06",
+      "name": "양산전국하프마라톤대회",
+      "distances": [
+        {
+          "id": "d1206half0001",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "a34c7cbf86abac20",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "d1206half0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "eece07533b33b94a",
+          "distanceId": "d1206half0001",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf7ff64886a1caab",
+          "distanceId": "a34c7cbf86abac20",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "a34c7cbf86abac20",
+          "goalTime": "00:40:00"
+        },
+        {
+          "userId": "7ddf98d79e0b954f",
+          "distanceId": "d1206half0001",
+          "goalTime": "01:18:59"
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f",
+      "startTime": "09:00",
+      "place": "",
+      "homepage": "https://ysmarathon.kr/info1",
+      "official": false
+    },
+    {
+      "id": "95f06f82a5db7ad9",
+      "date": "2026-12-13",
+      "name": "기장육상연맹",
+      "distances": [
+        {
+          "id": "e0f9cc3346ea0a1a",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "e001672409258642",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": ""
+        },
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": ""
+        },
+        {
+          "userId": "8c5e0418b9901668",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": ""
+        },
+        {
+          "userId": "02d0ec98d212ce9e",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": ""
+        },
+        {
+          "userId": "08a091846e74923c",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "e0f9cc3346ea0a1a",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": false
+    },
+    {
+      "id": "ac30c66bef2454c2",
+      "date": "2026-12-13",
+      "name": "진주마라톤대회",
+      "distances": [
+        {
+          "id": "7bded16223d1ba27",
+          "type": "full",
+          "label": "풀"
+        },
+        {
+          "id": "7a0a6599179b2637",
+          "type": "half",
+          "label": "하프"
+        },
+        {
+          "id": "ae58e589325269b1",
+          "type": "10k",
+          "label": "10k"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "d11e8f5af4d6d48b",
+          "distanceId": "7bded16223d1ba27",
+          "goalTime": ""
+        },
+        {
+          "userId": "0d83b774d639f486",
+          "distanceId": "7bded16223d1ba27",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf7ff64886a1caab",
+          "distanceId": "7bded16223d1ba27",
+          "goalTime": ""
+        },
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "7bded16223d1ba27",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "7bded16223d1ba27",
+          "goalTime": ""
+        },
+        {
+          "userId": "fb3dc018d3c32438",
+          "distanceId": "7a0a6599179b2637",
+          "goalTime": ""
+        },
+        {
+          "userId": "1a78456bf999b571",
+          "distanceId": "7a0a6599179b2637",
+          "goalTime": ""
+        },
+        {
+          "userId": "5390ce1cfd55f6b0",
+          "distanceId": "7a0a6599179b2637",
+          "goalTime": ""
+        },
+        {
+          "userId": "a64e387d0b2c4b53",
+          "distanceId": "ae58e589325269b1",
+          "goalTime": "00:40:00"
+        }
+      ],
+      "createdBy": "a64e387d0b2c4b53",
+      "startTime": "09:30",
+      "place": "",
+      "homepage": "https://www.jinma.co.kr/ko/sub1_2.html",
+      "official": false
+    },
+    {
+      "id": "d71bddb26a0a6880",
+      "date": "2027-02-20",
+      "name": "밀양마라톤대회",
+      "distances": [
+        {
+          "id": "2eaa96af5b3474cc",
+          "type": "5k",
+          "label": "5k"
+        },
+        {
+          "id": "622ca9bf46f562a6",
+          "type": "10k",
+          "label": "10k"
+        },
+        {
+          "id": "f9e6ad38b5089db2",
+          "type": "half",
+          "label": "하프"
+        }
+      ],
+      "entries": [
+        {
+          "userId": "18af1f0b35a2fd85",
+          "distanceId": "2eaa96af5b3474cc",
+          "goalTime": ""
+        },
+        {
+          "userId": "0939ed391142c4fd",
+          "distanceId": "2eaa96af5b3474cc",
+          "goalTime": ""
+        },
+        {
+          "userId": "0e44125b9d8e6c68",
+          "distanceId": "2eaa96af5b3474cc",
+          "goalTime": ""
+        },
+        {
+          "userId": "af4e2191f6aab73f",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "bcd5b455fb8eeb4c",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "4dfd27e2e5d2c40d",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "14e7d9606fca7f3e",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "141e94fb83a4cf7e",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "cf2484aa7042e61b",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "17cf507feb7b044b",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "e001672409258642",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "9d8ee6e3c7e34e3a",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "853d3475ad0c2b54",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "f0aeb056bc5b97c5",
+          "distanceId": "622ca9bf46f562a6",
+          "goalTime": ""
+        },
+        {
+          "userId": "c9ddee7d3f459c44",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "771b1f49c0c39708",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "32faaf52d52ceef6",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "2e4b21ec482a1c84",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "7b7774bf0ee25d8b",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "939ec77691896d3d",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "c837da942b267240",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "f24d2d40293d7868",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "55f3d17afda3d027",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "7ebce02eaecb56fb",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        },
+        {
+          "userId": "789ce7127787b14b",
+          "distanceId": "f9e6ad38b5089db2",
+          "goalTime": ""
+        }
+      ],
+      "createdBy": "7ddf98d79e0b954f",
+      "startTime": "",
+      "place": "",
+      "homepage": "",
+      "official": true
+    }
+  ]
+}
