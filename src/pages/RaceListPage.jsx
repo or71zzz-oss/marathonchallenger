@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate, useNavigationType } from 'react-router-dom';
 import { api } from '../api.js';
 import CalendarPicker, { isoToSlash } from '../CalendarPicker.jsx';
@@ -63,6 +63,7 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
   const [pendingScroll, setPendingScroll] = useState(null);
   const focused = useRef(null);
   const restoreApplied = useRef(false);
+  const [focusGoalKey, setFocusGoalKey] = useState(null);
   const canManage = isAdminUser(user);
   const today = new Date();
   const todayKey = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
@@ -101,6 +102,15 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
       return next;
     });
   }, [races, user.id]);
+
+  useLayoutEffect(() => {
+    if (!focusGoalKey) return;
+    const input = document.querySelector(`[data-goal-key="${focusGoalKey}"]`);
+    if (input instanceof HTMLInputElement) {
+      input.focus();
+      setFocusGoalKey(null);
+    }
+  }, [focusGoalKey, races]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -233,12 +243,60 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
     });
   }
 
+  function raceWithParticipation(race, distanceId, participating) {
+    const others = race.entries.filter((entry) => entry.userId !== user.id);
+    if (!participating) {
+      return { ...race, entries: others };
+    }
+    return {
+      ...race,
+      entries: [...others, { userId: user.id, distanceId, goalTime: '' }],
+    };
+  }
+
   async function toggleDistance(race, distance) {
     const current = myRaceEntry(race);
     const isActive = current?.distanceId === distance.id;
     if (current && !isActive) return;
     const key = `${race.id}:${distance.id}`;
     setError('');
+
+    const optimisticRace = raceWithParticipation(race, distance.id, !isActive);
+    setRaces((list) => list.map((item) => (item.id === race.id ? optimisticRace : item)));
+
+    if (isActive) {
+      setDrafts((draft) => {
+        const next = { ...draft };
+        delete next[key];
+        return next;
+      });
+      setSaved((state) => ({ ...state, [key]: false }));
+    } else {
+      const prefix = `${race.id}:`;
+      const dropOtherDrafts = (next) => {
+        for (const d of race.distances) {
+          if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
+        }
+      };
+      setDrafts((draft) => {
+        const next = { ...draft };
+        dropOtherDrafts(next);
+        next[key] = '00:00:00';
+        return next;
+      });
+      setSaved((state) => {
+        const next = { ...state };
+        dropOtherDrafts(next);
+        return next;
+      });
+      setTimeErrors((state) => {
+        const next = { ...state };
+        dropOtherDrafts(next);
+        return next;
+      });
+      setFocusGoalKey(key);
+    }
+
     try {
       const data = await api(`/api/races/${race.id}/entries`, {
         method: 'PUT',
@@ -248,43 +306,47 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
           goalTime: '',
         }),
       });
-      setRaces((current) => current.map((item) => (item.id === data.race.id ? data.race : item)));
+      setRaces((list) => list.map((item) => (item.id === data.race.id ? data.race : item)));
+    } catch (err) {
+      setRaces((list) => list.map((item) => (item.id === race.id ? race : item)));
+      const prefix = `${race.id}:`;
       if (isActive) {
-        setDrafts((current) => {
-          const next = { ...current };
+        const entry = race.entries.find((e) => e.userId === user.id);
+        if (entry) {
+          const rollbackKey = `${race.id}:${entry.distanceId}`;
+          setDrafts((draft) => ({
+            ...draft,
+            [rollbackKey]: toTimeMask(entry.goalTime),
+          }));
+        }
+      } else {
+        setDrafts((draft) => {
+          const next = { ...draft };
+          for (const d of race.distances) {
+            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
+          }
           delete next[key];
           return next;
         });
-        setSaved((current) => ({ ...current, [key]: false }));
-      } else {
-        const prefix = `${race.id}:`;
-        setDrafts((current) => {
-          const next = { ...current };
-          for (const d of race.distances) {
-            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
-          }
-          next[key] = '00:00:00';
+        setSaved((state) => {
+          const next = { ...state };
+          delete next[key];
           return next;
         });
-        setSaved((current) => {
-          const next = { ...current };
-          for (const d of race.distances) {
-            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
-          }
-          return next;
-        });
-        setTimeErrors((current) => {
-          const next = { ...current };
-          for (const d of race.distances) {
-            if (d.id !== distance.id) delete next[`${prefix}${d.id}`];
-          }
-          return next;
-        });
+        setFocusGoalKey(null);
       }
-    } catch (err) {
       if (err.status === 401) navigate('/login', { replace: true });
       else setError(err.message);
     }
+  }
+
+  function raceWithGoalTime(race, goalTime) {
+    return {
+      ...race,
+      entries: race.entries.map((entry) =>
+        entry.userId === user.id ? { ...entry, goalTime } : entry,
+      ),
+    };
   }
 
   async function submitTime(race, distanceId, rawValue) {
@@ -298,20 +360,34 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
       setSaved((current) => ({ ...current, [key]: false }));
       return;
     }
+
+    const entry = myEntry(race, distanceId);
+    const previousGoal = entry?.goalTime ?? '';
+    const previousDraft =
+      drafts[key] ?? (storedGoal(entry) || toTimeMask(previousGoal) || '00:00:00');
+    const previousSaved = saved[key] ?? Boolean(storedGoal(entry));
+
+    setRaces((list) =>
+      list.map((item) => (item.id === race.id ? raceWithGoalTime(race, goalTime) : item)),
+    );
+    setDrafts((current) => ({ ...current, [key]: goalTime }));
+    setSaved((current) => ({ ...current, [key]: true }));
+    setTimeErrors((current) => {
+      const next = { ...current };
+      delete next[key];
+      return next;
+    });
+
     try {
       const data = await api(`/api/races/${race.id}/entries`, {
         method: 'PUT',
         body: JSON.stringify({ distanceId, active: true, goalTime }),
       });
-      setRaces((current) => current.map((item) => (item.id === data.race.id ? data.race : item)));
-      setDrafts((current) => ({ ...current, [key]: goalTime }));
-      setSaved((current) => ({ ...current, [key]: true }));
-      setTimeErrors((current) => {
-        const next = { ...current };
-        delete next[key];
-        return next;
-      });
+      setRaces((list) => list.map((item) => (item.id === data.race.id ? data.race : item)));
     } catch (err) {
+      setRaces((list) => list.map((item) => (item.id === race.id ? race : item)));
+      setDrafts((current) => ({ ...current, [key]: previousDraft }));
+      setSaved((current) => ({ ...current, [key]: previousSaved }));
       if (err.status === 401) navigate('/login', { replace: true });
       else setTimeErrors((current) => ({ ...current, [key]: err.message }));
     }
@@ -583,6 +659,7 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
                         <div className="time-wrap">
                           <div className={isSaved ? 'time-field saved' : 'time-field'}>
                             <input
+                              data-goal-key={key}
                               value={timeValue}
                               aria-label={`${distance.label} 도전 시간`}
                               inputMode="numeric"
