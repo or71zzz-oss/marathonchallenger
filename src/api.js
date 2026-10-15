@@ -1,12 +1,7 @@
 const TOKEN_KEY = 'marathon_token';
 
 function resolveApiRoot() {
-  const fromEnv = (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
-  if (fromEnv) return fromEnv;
-  if (typeof window !== 'undefined' && window.location.hostname === 'or71zzz-oss.github.io') {
-    return 'https://marathonchallenger.onrender.com';
-  }
-  return '';
+  return (import.meta.env.VITE_API_BASE || '').replace(/\/$/, '');
 }
 
 const API_ROOT = resolveApiRoot();

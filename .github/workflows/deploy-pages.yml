@@ -34,6 +34,7 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: /marathonchallenger/
+          # GitHub Pages는 정적만 서빙 — API는 Vercel 등 외부 URL (Repository variable MARATHON_API_URL)
           VITE_API_BASE: ${{ vars.MARATHON_API_URL }}
 
       - name: SPA fallback for GitHub Pages
