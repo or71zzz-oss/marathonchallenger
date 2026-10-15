@@ -62,7 +62,7 @@ export default function RaceListPage({ user, onLogout }) {
   const [pendingScroll, setPendingScroll] = useState(null);
   const focused = useRef(null);
   const restoreApplied = useRef(false);
-  const canManage = user.name === '정재진';
+  const canManage = user.role === 'admin';
   const today = new Date();
   const todayKey = today.getFullYear() * 10000 + (today.getMonth() + 1) * 100 + today.getDate();
 
@@ -437,6 +437,9 @@ export default function RaceListPage({ user, onLogout }) {
       pageShellClass={view === 'mine' ? 'view-mine' : 'view-list'}
       action={
         <>
+          {user.role === 'admin' ? (
+            <Link className="ghost" to="/admin">회원 관리</Link>
+          ) : null}
           <button
             className={view === 'mine' ? 'primary' : 'ghost'}
             type="button"

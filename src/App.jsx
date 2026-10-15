@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { api, getToken, setToken } from './api.js';
 import LoginPage from './pages/LoginPage.jsx';
 import RaceDetailPage from './pages/RaceDetailPage.jsx';
+import AdminPage from './pages/AdminPage.jsx';
 import RaceListPage from './pages/RaceListPage.jsx';
 
 export default function App() {
@@ -44,6 +45,10 @@ export default function App() {
       <Route
         path="/"
         element={user ? <RaceListPage user={user} onLogout={logout} /> : <Navigate to="/login" replace />}
+      />
+      <Route
+        path="/admin"
+        element={user ? <AdminPage user={user} onLogout={logout} /> : <Navigate to="/login" replace />}
       />
       <Route
         path="/races/:id"

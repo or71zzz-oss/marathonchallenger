@@ -656,3 +656,47 @@ h1 .participant-total {
   }
   h1 { font-size: 1.45rem; }
 }
+
+.admin-card h1 { margin-bottom: 8px; }
+
+.admin-summary { margin-bottom: 16px; }
+
+.admin-table-wrap {
+  overflow-x: auto;
+  margin: 0 -4px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 10px 8px;
+  border-bottom: 1px solid #e8edf4;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.admin-table th {
+  color: #5c6b7f;
+  font-weight: 700;
+  font-size: 0.82rem;
+}
+
+.admin-table tr.is-banned td {
+  color: #9aa5b5;
+}
+
+.danger-text {
+  color: #c0392b;
+  border-color: #f0d4d0;
+}
+
+.top-actions a.ghost {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}

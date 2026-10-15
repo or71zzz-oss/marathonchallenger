@@ -58,8 +58,86 @@ function goalSeconds(value) {
   return first * 3600 + second * 60 + Number(match[3]);
 }
 
+const ADMIN_NAME = '관리자';
+
+function isAdmin(user) {
+  return user?.role === 'admin';
+}
+
+function canManageRaces(user) {
+  return isAdmin(user);
+}
+
 function publicUser(user) {
-  return { id: user.id, name: user.name };
+  return {
+    id: user.id,
+    name: user.name,
+    role: isAdmin(user) ? 'admin' : 'member',
+  };
+}
+
+function ensureAdminUser(db) {
+  const { passwordHash, salt } = hashPassword('1234');
+  let user = db.users.find((item) => item.name === ADMIN_NAME);
+  if (!user) {
+    db.users.push({
+      id: randomBytes(8).toString('hex'),
+      name: ADMIN_NAME,
+      passwordHash,
+      salt,
+      passwordSet: true,
+      role: 'admin',
+      banned: false,
+    });
+    return;
+  }
+  user.role = 'admin';
+  user.banned = false;
+  user.passwordSet = true;
+  user.passwordHash = passwordHash;
+  user.salt = salt;
+}
+
+function adminUserSummary(db, user) {
+  const activeSessions = db.sessions.filter((session) => session.userId === user.id).length;
+  let raceEntries = 0;
+  for (const race of db.races) {
+    raceEntries += race.entries.filter((entry) => entry.userId === user.id).length;
+  }
+  return {
+    id: user.id,
+    name: user.name,
+    role: isAdmin(user) ? 'admin' : 'member',
+    banned: Boolean(user.banned),
+    passwordSet: user.passwordSet !== false,
+    activeSessions,
+    raceEntries,
+  };
+}
+
+function banUser(db, targetId, actorId) {
+  if (targetId === actorId) {
+    const error = new Error('자기 자신은 추방할 수 없습니다.');
+    error.status = 400;
+    throw error;
+  }
+  const user = db.users.find((item) => item.id === targetId);
+  if (!user) {
+    const error = new Error('사용자를 찾을 수 없습니다.');
+    error.status = 404;
+    throw error;
+  }
+  if (isAdmin(user)) {
+    const error = new Error('관리자는 추방할 수 없습니다.');
+    error.status = 403;
+    throw error;
+  }
+  user.banned = true;
+  db.sessions = db.sessions.filter((session) => session.userId !== targetId);
+  for (const race of db.races) {
+    race.entries = race.entries.filter((entry) => entry.userId !== targetId);
+  }
+  return adminUserSummary(db, user);
 }
 
 function normalizeRaceEntries(race) {
@@ -140,6 +218,10 @@ export function createApp({ serveStatic = false } = {}) {
           res.status(401).json({ error: '다시 로그인해 주세요.' });
           return;
         }
+        if (user.banned) {
+          res.status(403).json({ error: '접근이 제한된 사용자입니다.' });
+          return;
+        }
         req.user = user;
         next();
       })
@@ -164,11 +246,24 @@ export function createApp({ serveStatic = false } = {}) {
     }
 
     update((db) => {
+      ensureAdminUser(db);
       let user = db.users.find((item) => item.name === name);
       if (!user) {
         const { passwordHash, salt } = hashPassword(password);
-        user = { id: randomBytes(8).toString('hex'), name, passwordHash, salt, passwordSet: true };
+        user = {
+          id: randomBytes(8).toString('hex'),
+          name,
+          passwordHash,
+          salt,
+          passwordSet: true,
+          role: 'member',
+          banned: false,
+        };
         db.users.push(user);
+      } else if (user.banned) {
+        const error = new Error('접근이 제한된 사용자입니다.');
+        error.status = 403;
+        throw error;
       } else if (user.passwordSet === false) {
         const hashed = hashPassword(password);
         user.passwordHash = hashed.passwordHash;
@@ -190,6 +285,39 @@ export function createApp({ serveStatic = false } = {}) {
 
   app.get('/api/me', requireUser, (req, res) => {
     res.json({ user: publicUser(req.user) });
+  });
+
+  app.get('/api/admin/users', requireUser, (req, res, next) => {
+    if (!isAdmin(req.user)) {
+      res.status(403).json({ error: '권한이 없습니다.' });
+      return;
+    }
+    update((db) => {
+      ensureAdminUser(db);
+      const users = db.users
+        .map((user) => adminUserSummary(db, user))
+        .sort((a, b) => {
+          if (a.role !== b.role) return a.role === 'admin' ? -1 : 1;
+          if (a.banned !== b.banned) return a.banned ? 1 : -1;
+          return a.name.localeCompare(b.name, 'ko');
+        });
+      return { users };
+    })
+      .then((result) => res.json(result))
+      .catch(next);
+  });
+
+  app.post('/api/admin/users/:id/ban', requireUser, (req, res, next) => {
+    if (!isAdmin(req.user)) {
+      res.status(403).json({ error: '권한이 없습니다.' });
+      return;
+    }
+    update((db) => {
+      const user = banUser(db, req.params.id, req.user.id);
+      return { user };
+    })
+      .then((result) => res.json(result))
+      .catch(next);
   });
 
   app.post('/api/logout', requireUser, (req, res, next) => {
@@ -283,7 +411,7 @@ export function createApp({ serveStatic = false } = {}) {
   });
 
   app.put('/api/races/:id', requireUser, (req, res, next) => {
-    if (req.user.name !== '정재진') {
+    if (!canManageRaces(req.user)) {
       res.status(403).json({ error: '대회를 수정할 수 없습니다.' });
       return;
     }
@@ -314,7 +442,7 @@ export function createApp({ serveStatic = false } = {}) {
   });
 
   app.delete('/api/races/:id', requireUser, (req, res, next) => {
-    if (req.user.name !== '정재진') {
+    if (!canManageRaces(req.user)) {
       res.status(403).json({ error: '대회를 삭제할 수 없습니다.' });
       return;
     }
