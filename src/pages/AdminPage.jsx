@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { isAdminUser } from '../auth.js';
 import { api } from '../api.js';
 import Shell from '../Shell.jsx';
 
@@ -16,14 +17,14 @@ export default function AdminPage({ user, onLogout }) {
   }
 
   useEffect(() => {
-    if (user.role !== 'admin') {
+    if (!isAdminUser(user)) {
       navigate('/', { replace: true });
       return;
     }
     load()
       .catch((err) => {
         if (err.status === 401) navigate('/login', { replace: true });
-        else if (err.status === 403) navigate('/', { replace: true });
+        else if (err.status === 403) setError('관리자만 접근할 수 있습니다. 로그아웃 후 관리자(1234)로 다시 로그인해 주세요.');
         else setError(err.message);
       })
       .finally(() => setLoading(false));

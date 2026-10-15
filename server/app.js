@@ -61,7 +61,7 @@ function goalSeconds(value) {
 const ADMIN_NAME = '관리자';
 
 function isAdmin(user) {
-  return user?.role === 'admin';
+  return user?.role === 'admin' || user?.name === ADMIN_NAME;
 }
 
 function canManageRaces(user) {
