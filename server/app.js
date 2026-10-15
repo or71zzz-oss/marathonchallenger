@@ -361,6 +361,20 @@ export function createApp({ serveStatic = false } = {}) {
       .catch(next);
   });
 
+  app.get('/api/races/:id', requireUser, (req, res, next) => {
+    read()
+      .then((db) => {
+        const race = db.races.find((item) => item.id === req.params.id);
+        if (!race) {
+          res.status(404).json({ error: '대회를 찾을 수 없습니다.' });
+          return;
+        }
+        normalizeRaceEntries(race);
+        res.json({ race: publicRace(db, race) });
+      })
+      .catch(next);
+  });
+
   function readRaceInput(body) {
     const date = String(body?.date || '');
     const name = String(body?.name || '').trim();

@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api.js';
 import { formatDateLong, participantCountClass, totalParticipantCount, toTimeMask } from '../format.js';
 import Shell from '../Shell.jsx';
 
 export default function RaceDetailPage({ user, onLogout }) {
   const { id } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
-  const [race, setRace] = useState(null);
+  const seededRace = location.state?.race?.id === id ? location.state.race : null;
+  const [race, setRace] = useState(seededRace);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    api('/api/races')
-      .then((data) => {
-        const found = data.races.find((item) => item.id === id);
-        if (!found) setError('대회를 찾을 수 없습니다.');
-        else setRace(found);
-      })
+    if (seededRace) {
+      setRace(seededRace);
+      return;
+    }
+    setRace(null);
+    api(`/api/races/${id}`)
+      .then((data) => setRace(data.race))
       .catch((err) => {
         if (err.status === 401) navigate('/login', { replace: true });
+        else if (err.status === 404) setError('대회를 찾을 수 없습니다.');
         else setError(err.message);
       });
-  }, [id, navigate]);
+  }, [id, navigate, seededRace]);
 
   return (
     <Shell user={user} onLogout={onLogout}>

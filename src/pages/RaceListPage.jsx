@@ -529,6 +529,7 @@ export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoad
               <Link
                 className={race.official ? 'race-name official-race' : 'race-name'}
                 to={`/races/${race.id}`}
+                state={{ race, restoreList: true }}
                 onClick={() => openRaceDetail(race)}
               >
                 {race.name}
