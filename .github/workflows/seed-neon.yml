@@ -1,0 +1,38 @@
+name: Seed Neon database
+
+on:
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Overwrite existing app_snapshot row
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Seed from data/db.json
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "::error::Add repository secret DATABASE_URL (Neon connection string)."
+            exit 1
+          fi
+          if [ "${{ inputs.force }}" = "true" ]; then
+            npm run db:migrate -- --force
+          else
+            npm run db:migrate
+          fi
