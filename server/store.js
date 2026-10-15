@@ -7,6 +7,13 @@ const dataFile = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '
 const SNAPSHOT_ID = 'main';
 
 let queue = Promise.resolve();
+let schemaReady = false;
+
+async function ensureSchemaOnce() {
+  if (schemaReady) return;
+  await ensureSchema();
+  schemaReady = true;
+}
 
 function emptyDb() {
   return { users: [], sessions: [], races: [] };
@@ -34,6 +41,7 @@ function normalizeDb(raw) {
 }
 
 async function readNeon() {
+  await ensureSchemaOnce();
   const sql = getSql();
   const rows = await sql`SELECT data FROM app_snapshot WHERE id = ${SNAPSHOT_ID}`;
   if (!rows.length) return emptyDb();
@@ -41,22 +49,19 @@ async function readNeon() {
 }
 
 async function updateNeon(mutator) {
+  await ensureSchemaOnce();
   const sql = getSql();
-  return sql.transaction(async (tx) => {
-    const rows = await tx`
-      SELECT data FROM app_snapshot WHERE id = ${SNAPSHOT_ID} FOR UPDATE
-    `;
-    const db = rows.length ? normalizeDb(rows[0].data) : emptyDb();
-    const result = await mutator(db);
-    const payload = JSON.stringify(db);
-    await tx`
-      INSERT INTO app_snapshot (id, data)
-      VALUES (${SNAPSHOT_ID}, ${payload}::jsonb)
-      ON CONFLICT (id) DO UPDATE
-      SET data = ${payload}::jsonb, updated_at = now()
-    `;
-    return result;
-  });
+  const rows = await sql`SELECT data FROM app_snapshot WHERE id = ${SNAPSHOT_ID}`;
+  const db = rows.length ? normalizeDb(rows[0].data) : emptyDb();
+  const result = mutator(db);
+  const payload = JSON.stringify(db);
+  await sql`
+    INSERT INTO app_snapshot (id, data)
+    VALUES (${SNAPSHOT_ID}, ${payload}::jsonb)
+    ON CONFLICT (id) DO UPDATE
+    SET data = ${payload}::jsonb, updated_at = now()
+  `;
+  return result;
 }
 
 function readFile() {
