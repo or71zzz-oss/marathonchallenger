@@ -11,7 +11,8 @@
     "dev:client": "vite",
     "start": "node server/index.js",
     "build": "vite build",
-    "db:migrate": "node scripts/migrate-db-to-neon.mjs"
+    "db:migrate": "node scripts/migrate-db-to-neon.mjs",
+    "qa:prod": "node scripts/qa-smoke.mjs https://marathonchallenger.vercel.app"
   },
   "dependencies": {
     "@neondatabase/serverless": "^0.10.4",
