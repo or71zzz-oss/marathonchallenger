@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { api } from '../api.js';
 import { formatDateLong, participantCountClass, totalParticipantCount, toTimeMask } from '../format.js';
@@ -11,6 +11,10 @@ export default function RaceDetailPage({ user, onLogout }) {
   const seededRace = location.state?.race?.id === id ? location.state.race : null;
   const [race, setRace] = useState(seededRace);
   const [error, setError] = useState('');
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]);
 
   useEffect(() => {
     if (seededRace) {
