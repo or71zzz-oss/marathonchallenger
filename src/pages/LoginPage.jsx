@@ -17,7 +17,7 @@ export default function LoginPage({ onLogin }) {
         body: JSON.stringify({ name: name.trim(), password }),
       });
       setToken(data.token);
-      onLogin(data.user);
+      onLogin(data.user, data.races);
     } catch (err) {
       setError(err.message);
     } finally {

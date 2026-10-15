@@ -9,17 +9,29 @@ import RaceListPage from './pages/RaceListPage.jsx';
 export default function App() {
   const [user, setUser] = useState(null);
   const [ready, setReady] = useState(false);
+  const [preloadedRaces, setPreloadedRaces] = useState(null);
 
   useEffect(() => {
     if (!getToken()) {
       setReady(true);
       return;
     }
-    api('/api/me')
-      .then((data) => setUser(data.user))
-      .catch(() => setUser(null))
+    api('/api/bootstrap')
+      .then((data) => {
+        setUser(data.user);
+        setPreloadedRaces(data.races);
+      })
+      .catch(() => {
+        setUser(null);
+        setPreloadedRaces(null);
+      })
       .finally(() => setReady(true));
   }, []);
+
+  function handleLogin(nextUser, races) {
+    setUser(nextUser);
+    setPreloadedRaces(races ?? null);
+  }
 
   async function logout() {
     try {
@@ -30,6 +42,7 @@ export default function App() {
     sessionStorage.removeItem('marathon-list-restore');
     setToken(null);
     setUser(null);
+    setPreloadedRaces(null);
   }
 
   if (!ready) {
@@ -40,11 +53,22 @@ export default function App() {
     <Routes>
       <Route
         path="/login"
-        element={user ? <Navigate to="/" replace /> : <LoginPage onLogin={setUser} />}
+        element={user ? <Navigate to="/" replace /> : <LoginPage onLogin={handleLogin} />}
       />
       <Route
         path="/"
-        element={user ? <RaceListPage user={user} onLogout={logout} /> : <Navigate to="/login" replace />}
+        element={
+          user
+            ? (
+              <RaceListPage
+                user={user}
+                onLogout={logout}
+                initialRaces={preloadedRaces}
+                onRacesLoaded={setPreloadedRaces}
+              />
+            )
+            : <Navigate to="/login" replace />
+        }
       />
       <Route
         path="/admin"

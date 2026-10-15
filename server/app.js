@@ -148,6 +148,13 @@ function normalizeRaceEntries(race) {
   race.entries = [...byUser.values()];
 }
 
+function listPublicRaces(db) {
+  for (const race of db.races) normalizeRaceEntries(race);
+  return [...db.races]
+    .sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name, 'ko'))
+    .map((race) => publicRace(db, race));
+}
+
 function publicRace(db, race) {
   normalizeRaceEntries(race);
   const names = new Map(db.users.map((user) => [user.id, user.name]));
@@ -277,7 +284,7 @@ export function createApp({ serveStatic = false } = {}) {
 
       const token = randomBytes(24).toString('hex');
       db.sessions.push({ token, userId: user.id });
-      return { token, user: publicUser(user) };
+      return { token, user: publicUser(user), races: listPublicRaces(db) };
     })
       .then((result) => res.json(result))
       .catch(next);
@@ -287,23 +294,39 @@ export function createApp({ serveStatic = false } = {}) {
     res.json({ user: publicUser(req.user) });
   });
 
+  app.get('/api/bootstrap', (req, res, next) => {
+    read()
+      .then((db) => {
+        const user = authUser(req, db);
+        if (!user) {
+          res.status(401).json({ error: '다시 로그인해 주세요.' });
+          return;
+        }
+        if (user.banned) {
+          res.status(403).json({ error: '접근이 제한된 사용자입니다.' });
+          return;
+        }
+        res.json({ user: publicUser(user), races: listPublicRaces(db) });
+      })
+      .catch(next);
+  });
+
   app.get('/api/admin/users', requireUser, (req, res, next) => {
     if (!isAdmin(req.user)) {
       res.status(403).json({ error: '권한이 없습니다.' });
       return;
     }
-    update((db) => {
-      ensureAdminUser(db);
-      const users = db.users
-        .map((user) => adminUserSummary(db, user))
-        .sort((a, b) => {
-          if (a.role !== b.role) return a.role === 'admin' ? -1 : 1;
-          if (a.banned !== b.banned) return a.banned ? 1 : -1;
-          return a.name.localeCompare(b.name, 'ko');
-        });
-      return { users };
-    })
-      .then((result) => res.json(result))
+    read()
+      .then((db) => {
+        const users = db.users
+          .map((user) => adminUserSummary(db, user))
+          .sort((a, b) => {
+            if (a.role !== b.role) return a.role === 'admin' ? -1 : 1;
+            if (a.banned !== b.banned) return a.banned ? 1 : -1;
+            return a.name.localeCompare(b.name, 'ko');
+          });
+        res.json({ users });
+      })
       .catch(next);
   });
 
@@ -331,14 +354,10 @@ export function createApp({ serveStatic = false } = {}) {
   });
 
   app.get('/api/races', requireUser, (req, res, next) => {
-    update((db) => {
-      for (const race of db.races) normalizeRaceEntries(race);
-      const races = [...db.races]
-        .sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name, 'ko'))
-        .map((race) => publicRace(db, race));
-      return { races };
-    })
-      .then((result) => res.json(result))
+    read()
+      .then((db) => {
+        res.json({ races: listPublicRaces(db) });
+      })
       .catch(next);
   });
 

@@ -41,13 +41,13 @@ function saveListRestore({ yearFilter, monthFilter, view, raceId }) {
   );
 }
 
-export default function RaceListPage({ user, onLogout }) {
+export default function RaceListPage({ user, onLogout, initialRaces, onRacesLoaded }) {
   const navigate = useNavigate();
   const location = useLocation();
   const navigationType = useNavigationType();
   const [races, setRaces] = useState([]);
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialRaces);
   const [open, setOpen] = useState(false);
   const [editingId, setEditingId] = useState(null);
   const [view, setView] = useState('all');
@@ -70,17 +70,23 @@ export default function RaceListPage({ user, onLogout }) {
   async function loadRaces() {
     const data = await api('/api/races');
     setRaces(data.races);
+    onRacesLoaded?.(data.races);
     return data.races;
   }
 
   useEffect(() => {
+    if (initialRaces) {
+      setRaces(initialRaces);
+      setLoading(false);
+      return;
+    }
     loadRaces()
       .catch((err) => {
         if (err.status === 401) navigate('/login', { replace: true });
         else setError(err.message);
       })
       .finally(() => setLoading(false));
-  }, [navigate]);
+  }, [navigate, initialRaces]);
 
   useEffect(() => {
     setDrafts((prev) => {
